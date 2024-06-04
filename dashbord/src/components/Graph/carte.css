@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+.dasbord-graph{
+    width:49% ;
+    height: 300px;
+    border: solid red 1px;
+}

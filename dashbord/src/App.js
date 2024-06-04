@@ -2,6 +2,11 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Logo from './assets/logo.png';
 import Bouton from './components/Bouton/Bouton';
+import Graph from './components/Graph/Graph';
+import Station from './components/Station/Station';
+import Avis from './components/Avis/Avis';
+import Previ from './components/Previ/Previ';
+
 
 function App() {
   const [selectedCity, setSelectedCity] = useState("Ville");
@@ -38,11 +43,28 @@ function App() {
           </div>
         </div>
         <div className="meteo-dashbord">
-          <div className="dashbord-constante"></div>
-          <div className="dashbord-graph"></div>
+          <div className="dashbord-constante">
+
+          </div>
+          <div className="graph">
+            <Graph></Graph>
+            <Graph></Graph>
+          </div>
+          <div className="graph">
+            <Graph></Graph>
+            <Graph></Graph>
+          </div>
         </div>
       </div>
-      <div className="Informations"></div>
+      <div className="Informations">
+          <div className='InfoUtile-Previ'>
+            <Station></Station>
+            <Avis></Avis>
+          </div>
+          <div className='PrevisionMeteo'>
+            <Previ></Previ>
+          </div>
+      </div>
     </div>
   );
 }

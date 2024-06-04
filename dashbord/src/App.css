@@ -52,12 +52,13 @@
   background-color: #1F2326;
   border-radius: 10px;
 }
-.dashbord-graph{
+.graph{
   width: 90%;
-  height: 300px;
   margin-top: 10px;
-  background-color: #1F2326;
-  border-radius: 10px;
+  border: solid black 1px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
 }
 .LogoSodexam{
   
@@ -80,4 +81,24 @@
   color: white;
   text-align: center;
   font-weight: bold;
+}
+.InfoUtile-Previ{
+  width: 100%;
+  height: 60%;
+  border: solid 1px green;
+  padding: 10px 10px ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Informations{
+  width: 25%;
+  height: 100vh;
+  border: solid 1px black;
+}
+.PrevisionMeteo{
+  width: 100%;
+  height: 40%;
+  padding: 10px 10px ;
+  border: solid 1px orangered;
 }
