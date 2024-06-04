@@ -5,5 +5,11 @@
 .station {
     width: 100%;
     height: 49%;
-    border: violet solid 1px;
+    background-color: #F4F5FB;
+    border-radius: 10px;
 }
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+  }

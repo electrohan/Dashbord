@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+.dashbord-constante{
+    width: 90%;
+    height: 10%;
+    background-color: #F4F5FB;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 1fr;
+    grid-template-areas: "humidite température vent";
+}
+.humidite {
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
+  .température {
+    background-color: #f5f5f5;
+    padding: 10px;
+  }
+  
+.vent{
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+ 

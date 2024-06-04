@@ -6,7 +6,8 @@ import Graph from './components/Graph/Graph';
 import Station from './components/Station/Station';
 import Avis from './components/Avis/Avis';
 import Previ from './components/Previ/Previ';
-
+import 'leaflet/dist/leaflet.css';
+import Constante from './components/Constante/Constante';
 
 function App() {
   const [selectedCity, setSelectedCity] = useState("Ville");
@@ -43,9 +44,7 @@ function App() {
           </div>
         </div>
         <div className="meteo-dashbord">
-          <div className="dashbord-constante">
-
-          </div>
+          <Constante></Constante>
           <div className="graph">
             <Graph></Graph>
             <Graph></Graph>

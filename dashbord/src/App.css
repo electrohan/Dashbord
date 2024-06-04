@@ -8,7 +8,10 @@
 .NavBar{
   width: 15%;
   height: 100vh;
-  background-color: #1F2326;
+  background-color: #F4F5FB;
+}
+.NavBar .Titre{
+  color: black;
 }
 .dashbord{
   width: 60%;
@@ -38,6 +41,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: black;
 }
 .meteo-dashbord{
   width: 100%;
@@ -49,13 +53,12 @@
 .dashbord-constante{
   width: 90%;
   height: 10%;
-  background-color: #1F2326;
+  background-color: #F4F5FB;
   border-radius: 10px;
 }
 .graph{
   width: 90%;
   margin-top: 10px;
-  border: solid black 1px;
   height: 300px;
   display: flex;
   justify-content: space-between;
@@ -85,7 +88,6 @@
 .InfoUtile-Previ{
   width: 100%;
   height: 60%;
-  border: solid 1px green;
   padding: 10px 10px ;
   display: flex;
   flex-direction: column;
@@ -94,11 +96,10 @@
 .Informations{
   width: 25%;
   height: 100vh;
-  border: solid 1px black;
 }
 .PrevisionMeteo{
   width: 100%;
   height: 40%;
   padding: 10px 10px ;
-  border: solid 1px orangered;
+  
 }
