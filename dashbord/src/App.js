@@ -44,7 +44,9 @@ function App() {
           </div>
         </div>
         <div className="meteo-dashbord">
-          <Constante></Constante>
+          <Constante>
+            
+          </Constante>
           <div className="graph">
             <Graph></Graph>
             <Graph></Graph>

@@ -5,25 +5,86 @@
 .dashbord-constante{
     width: 90%;
     height: 10%;
-    background-color: #F4F5FB;
+    background-color: #FFFFFF;
     border-radius: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
     grid-template-rows: 1fr;
     grid-template-areas: "humidite température vent";
+    gap: 10px;
 }
 .humidite {
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
   }
   
   .température {
     background-color: #f5f5f5;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
   }
   
 .vent{
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
 }
- 
+.humidite .valeur{
+    width: 50px;
+    height: 50px;
+    background-color: #25C595;
+    border-radius: 10px;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+}
+.humidite .valeur P{
+    color: white;
+    font-weight: bold;
+}
+.vent  .valeur P{
+    color: white;
+    font-weight: bold;
+}
+.température .valeur P{
+    color: white;
+    font-weight: bold;
+}
+.vent .valeur{
+    width: 50px;
+    height: 50px;
+    background-color: #FCA616;
+    border-radius: 10px;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+}
+.température .valeur {
+    width: 50px;
+    height: 50px;
+    background-color: #FE5454;
+    border-radius: 10px;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+}
+.ecrito{
+    font-weight: bold;
+    font-size: 20px;
+}

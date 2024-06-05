@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {fetchStation} from "/Dashbord-client/dashbord/src/utils/Station"
 import './Bouton.css';
 
-const cities = [
-  "Ville", "Biankouma", "Bocanda", "Bouaflé", "Bouaké Aéro", "Daloa", "Dianra", "Dikodougou",
-  "Dimbokro", "Dioulatiédougou", "Duékoué", "Ferké", "Guiglo", "Korhogo Aéro", "Man",
-  "Mankono", "M’Bahiakro", "Niakara", "Ouéllé", "Sassandra", "Séguéla", "Soubré",
-  "Tiassalé", "Tiébissou", "Touba", "Toumodi", "Vavoua"
-];
-
 export default function Bouton({ onCityChange }) {
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    const fetchDataFromApi = async () =>{
+      try{
+        const results = await fetchStation()
+        const stationNames = results.map(station => station.STATION);
+        setCities(stationNames);
+        console.log(stationNames);
+      }catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+          }
+    }
+    fetchDataFromApi()
+  }, []);
+
   const handleChange = (event) => {
     onCityChange(event.target.value);
   };
 
   return (
     <select name='Ville' onChange={handleChange}>
+      <option value="">Ville</option>
       {cities.map((city, index) => (
         <option key={index} value={city}>
           {city}
