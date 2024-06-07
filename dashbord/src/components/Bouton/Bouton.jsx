@@ -11,7 +11,6 @@ export default function Bouton({ onCityChange }) {
         const results = await fetchStation()
         const stationNames = results.map(station => station.STATION);
         setCities(stationNames);
-        console.log(stationNames);
       }catch (error) {
             console.error('Error fetching data:', error);
             throw error;

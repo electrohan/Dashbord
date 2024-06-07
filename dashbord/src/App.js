@@ -8,18 +8,29 @@ import Avis from './components/Avis/Avis';
 import Previ from './components/Previ/Previ';
 import 'leaflet/dist/leaflet.css';
 import Constante from './components/Constante/Constante';
+import Rain from './components/Graph/Rain';
+import SolarRadiation from './components/Graph/SolarRadiation';
+import DirectVent from './components/Graph/DirectVent';
+
 
 function App() {
   const [selectedCity, setSelectedCity] = useState("Ville");
 
   const handleCityChange = (city) => {
+    console.log('handleCityChange called with:', city);
     setSelectedCity(city);
   };
 
   useEffect(() => {
     if (selectedCity !== "Ville") {
-      console.log('Ville sélectionnée:', selectedCity);
+      try {
+        console.log('Ville sélectionnée:', selectedCity);
       // Ajoutez ici toute autre action que vous souhaitez exécuter lorsque la ville change
+      } catch (error) {
+        console.error('Error fetching data:', error);
+            throw error;
+      }
+      
     }
   }, [selectedCity]);
 
@@ -48,12 +59,12 @@ function App() {
             
           </Constante>
           <div className="graph">
-            <Graph></Graph>
-            <Graph></Graph>
+            <Graph selectedCity={selectedCity}></Graph>
+            <Rain selectedCity={selectedCity}></Rain>
           </div>
           <div className="graph">
-            <Graph></Graph>
-            <Graph></Graph>
+            <SolarRadiation selectedCity={selectedCity}></SolarRadiation>
+            <DirectVent selectedCity={selectedCity}></DirectVent>
           </div>
         </div>
       </div>
