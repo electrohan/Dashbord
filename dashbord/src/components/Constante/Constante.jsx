@@ -8,7 +8,7 @@ export default function Constante() {
             <div className="humidite">
                 <div className='valeur'><p>24</p> </div>
                 <div>
-                    <p className='ecrito'>Humidité</p>
+                    <p className='ecrito'>Direction du vent</p>
                     <p><FontAwesomeIcon icon={faDroplet} size="3xs" />10</p>
                 </div>
             </div>

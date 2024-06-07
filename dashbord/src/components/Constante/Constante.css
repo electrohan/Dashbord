@@ -14,7 +14,7 @@
     gap: 10px;
 }
 .humidite {
-    background-color: #f5f5f5;
+    background-color: #F4F5FB;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -23,7 +23,7 @@
   }
   
   .température {
-    background-color: #f5f5f5;
+    background-color: #F4F5FB;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@
   }
   
 .vent{
-    background-color: #f5f5f5;
+    background-color: #F4F5FB;
     padding: 10px;
     display: flex;
     align-items: center;
