@@ -1,10 +1,7 @@
 const fetchAirTemp = async (endpoint) => {
     try {
         const uppercaseEndpoint = endpoint.toUpperCase();
-        const response = await fetch(`http://localhost:3002/api/AirTemp/${uppercaseEndpoint}`);
-        if (!response.ok) {
-            throw new Error('Erreur lors de la récupération des données');
-        }
+        const response = await fetch(`http://localhost:3002/api/AirTemptoday/${uppercaseEndpoint}`);
         const data = await response.json();
         console.log(data);
         return data;
@@ -17,7 +14,7 @@ const fetchAirTemp = async (endpoint) => {
 const fetchRain = async (endpoint) => {
     try {
         const uppercaseEndpoint = endpoint.toUpperCase();
-        const response = await fetch(`http://localhost:3002/api/Rain/${uppercaseEndpoint}`);
+        const response = await fetch(`http://localhost:3002/api/raintoday/${uppercaseEndpoint}`);
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des données');
         }
@@ -33,7 +30,7 @@ const fetchRain = async (endpoint) => {
 const fetchSolar=async (endpoint) => {
     try {
         const uppercaseEndpoint = endpoint.toUpperCase();
-        const response = await fetch(`http://localhost:3002/api/SoloRadiation/${uppercaseEndpoint}`);
+        const response = await fetch(`http://localhost:3002/api/SoloRadiationByDay/${uppercaseEndpoint}`);
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des données');
         }
@@ -61,4 +58,65 @@ const fetchWinDir = async (endpoint) => {
         throw error;
     }
 }
-module.exports = { fetchAirTemp , fetchRain ,fetchSolar , fetchWinDir};
+const fetchWindSpeed = async (endpoint) =>{
+    try {
+        const uppercaseEndpoint = endpoint.toUpperCase();
+        const response = await fetch(`http://localhost:3002/api/wind-speed/${uppercaseEndpoint}`);
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des données');
+        }
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des données:', error);
+        throw error;
+    }
+}
+
+const fetchLastWindir =async(endpoint) => {
+    try {
+        const uppercaseEndpoint = endpoint.toUpperCase();
+        const response = await fetch(`http://localhost:3002/api/last-windir/${uppercaseEndpoint}`);
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des données');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des données:', error);
+        throw error;
+    }
+}
+
+const fetchLastAirTemp =async(endpoint) =>{
+    try {
+        const uppercaseEndpoint = endpoint.toUpperCase();
+        const response = await fetch(`http://localhost:3002/api/last-airtemp/${uppercaseEndpoint}`);
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des données');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des données:', error);
+        throw error;
+    }
+}
+
+const fetchLastSolarRadiation =async (endpoint) =>{
+    try {
+        const uppercaseEndpoint = endpoint.toUpperCase();
+        const response = await fetch(`http://localhost:3002/api/last-solar-radiation/${uppercaseEndpoint}`);
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des données');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des données:', error);
+        throw error;
+    }
+}
+
+module.exports = { fetchAirTemp , fetchRain ,fetchSolar , fetchWinDir,fetchWindSpeed,fetchLastWindir,fetchLastAirTemp,fetchLastSolarRadiation};

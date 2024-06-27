@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { Line } from 'react-chartjs-2';
+import { fetchWindSpeed } from "../../utils/param";
 import "./carte.css";
-import { Bar } from 'react-chartjs-2';
-import { fetchRain } from "../../utils/param";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  BarElement,
   Title,
   Tooltip,
   Legend,
@@ -19,22 +18,21 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  BarElement,
   Title,
   Tooltip,
   Legend
 );
 
-export default function Rain({ selectedCity }) {
-  const [rainData, setRainData] = useState({
+export default function WindSpeed({ selectedCity }) {
+  const [windData, setWindData] = useState({
     labels: [],
     datasets: [
       {
-        label: 'Quantité de pluie (mm)',
+        label: 'Vitesse du vent (m/s)',
         data: [],
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
+        fill: false,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
       }
     ],
   });
@@ -43,55 +41,55 @@ export default function Rain({ selectedCity }) {
     if (selectedCity && selectedCity !== "Ville") {
       const fetchData = async () => {
         try {
-          const data = await fetchRain(selectedCity);
-          const rainData = data;
+          const data = await fetchWindSpeed(selectedCity);
+          const windSpeedData = data.data;
 
           // Filtrer les données pour le jour J
           const today = new Date();
           const todayStr = today.toISOString().slice(0, 10); // Format: "YYYY-MM-DD"
 
-          const filteredRain = rainData.filter(item => {
+          const filteredWind = windSpeedData.filter(item => {
             const date = new Date(item.DateParam.replace(/"/g, ''));
             const dateStr = date.toISOString().slice(0, 10);
             return dateStr === todayStr;
           });
 
           // Préparer les labels et les données pour le graphique
-          const labels = filteredRain.map(item => {
+          const labels = filteredWind.map(item => {
             const date = new Date(item.DateParam.replace(/"/g, ''));
             let hours = date.getHours().toString().padStart(2, '0');
             return hours;
           });
 
-          const rainAmounts = filteredRain.map(item => item.Rain);
+          const windSpeeds = filteredWind.map(item => item.WindSpeed);
 
-          setRainData({
+          setWindData({
             labels,
             datasets: [
               {
-                label: 'Quantité de pluie (mm)',
-                data: rainAmounts,
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1,
+                label: 'Vitesse du vent (m/s)',
+                data: windSpeeds,
+                fill: false,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
               }
             ],
           });
         } catch (error) {
-          console.error("Erreur lors de la récupération des données de pluie:", error);
+          console.error("Erreur lors de la récupération des données de vent:", error);
         }
       };
       fetchData();
     } else {
-      setRainData({
+      setWindData({
         labels: [],
         datasets: [
           {
-            label: 'Quantité de pluie (mm)',
+            label: 'Vitesse du vent (m/s)',
             data: [],
-            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1,
+            fill: false,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
           }
         ],
       });
@@ -101,9 +99,9 @@ export default function Rain({ selectedCity }) {
   return (
     <div className='dasbord-graph'>
       {selectedCity === "Ville" ? (
-        <p>Veuillez sélectionner une ville pour voir les données de pluie.</p>
+        <p>Veuillez sélectionner une ville pour voir les données de vitesse du vent.</p>
       ) : (
-        <Bar data={rainData} />
+        <Line data={windData} />
       )}
     </div>
   );

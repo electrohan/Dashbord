@@ -1,0 +1,170 @@
+.App{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+  }
+  .NavBar{
+    width: 15%;
+    height: 100vh;
+    background-color: #F4F5FB;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 0px;
+  }
+  .NavBar .Titre{
+    color: black;
+  }
+  .dashbord{
+    width: 60%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Centre les éléments verticalement */
+    align-items: center;   
+    
+  }
+  .dashbord-info{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  /* Centre les éléments verticalement */
+  }
+  .dashbord-info h1,h3{
+    margin: 0;
+    padding: 0;
+  }
+  .dashbord-text{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+  }
+  .meteo-dashbord{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center; 
+  }
+  .dashbord-constante{
+    width: 90%;
+    height: 10%;
+    background-color: #F4F5FB;
+    border-radius: 10px;
+  }
+  .graph{
+    width: 90%;
+    margin-top: 10px;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .LogoSodexam{
+    
+    width: 100%;
+    height: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Nav_Links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Titre{
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+  }
+  .InfoUtile-Previ{
+    width: 100%;
+    height: 60%;
+    padding: 10px 10px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .Informations{
+    width: 25%;
+    height: 100vh;
+  }
+  .PrevisionMeteo{
+    width: 100%;
+    height: 40%;
+    padding: 10px 10px ;
+    
+  }
+  .User-Actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .User-Actions .Actions-previ{
+    width: 210px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .User-Actions .log-out{
+    height: 50px;
+    width: 210px;
+    background-color: #5058F2;
+    border-radius: 7.5px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    text-align: center;
+  }
+  .User-Actions .ActionsButton{
+    width: 50px;
+    height: 50px;
+    background-color: #5058F2;
+    border-radius: 7.5px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    text-align: center;
+  }
+  .NavHead{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .ReactModal__Content {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ReactModal__Overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }

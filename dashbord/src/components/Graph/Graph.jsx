@@ -1,7 +1,8 @@
-import React ,{ useEffect, useState }from 'react'
-import "./carte.css"
+import React, { useEffect, useState } from 'react';
+import "./carte.css";
 import { Line } from 'react-chartjs-2';
-import {fetchAirTemp} from "../../utils/param"
+import { fetchAirTemp } from "../../utils/param";
+import io from 'socket.io-client';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,8 +10,6 @@ import {
   PointElement,
   LineElement,
   Title,
-  BarElement,
-  RadialLinearScale, 
   Tooltip,
   Legend,
 } from 'chart.js';
@@ -20,18 +19,17 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  RadialLinearScale,
-  BarElement, // Importer BarElement
   Title,
   Tooltip,
   Legend
 );
+
 export default function Graph({ selectedCity }) {
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [
       {
-        label: 'Température (degre)',
+        label: 'Température (degré)',
         data: [],
         fill: false,
         backgroundColor: 'rgba(75,192,192,0.2)',
@@ -46,36 +44,31 @@ export default function Graph({ selectedCity }) {
         try {
           const data = await fetchAirTemp(selectedCity);
           const temperatures = data.data;
-  
-          // Agréger les données par mois pour l'année en cours
-          const aggregatedTemperatures = {};
-          const currentYear = new Date().getFullYear();
-          temperatures.forEach(item => {
-            const date = new Date(item.DateParam);
-            const year = date.getFullYear();
-            if (year === currentYear) {
-              const month = date.toLocaleString('default', { month: 'long' }); // Récupérer le nom du mois
-              const key = `${month} ${year}`;
-              if (!aggregatedTemperatures[key]) {
-                aggregatedTemperatures[key] = [];
-              }
-              aggregatedTemperatures[key].push(item.AirTemp);
-            }
+
+          // Filtrer les données pour le jour J
+          const today = new Date();
+          const todayStr = today.toISOString().slice(0, 10); // Format: "YYYY-MM-DD"
+
+          const filteredTemps = temperatures.filter(item => {
+            const date = new Date(item.DateParam.replace(/"/g, ''));
+            const dateStr = date.toISOString().slice(0, 10);
+            return dateStr === todayStr;
           });
-  
-          // Calculer la moyenne des températures par mois
-          const labels = Object.keys(aggregatedTemperatures);
-          const temperatureData = labels.map(monthYear => {
-            const temps = aggregatedTemperatures[monthYear];
-            const averageTemp = temps.reduce((acc, curr) => acc + curr, 0) / temps.length;
-            return averageTemp;
+
+          // Préparer les labels et les données pour le graphique
+          const labels = filteredTemps.map(item => {
+            const date = new Date(item.DateParam.replace(/"/g, ''));
+            let hours = date.getHours().toString().padStart(2, '0');
+            return hours;
           });
-  
+
+          const temperatureData = filteredTemps.map(item => item.AirTemp);
+
           setChartData({
             labels,
             datasets: [
               {
-                label: 'Température',
+                label: 'Température (degré)',
                 data: temperatureData,
                 fill: false,
                 backgroundColor: 'rgba(75,192,192,0.2)',
@@ -93,7 +86,7 @@ export default function Graph({ selectedCity }) {
         labels: [],
         datasets: [
           {
-            label: 'Température',
+            label: 'Température (degré)',
             data: [],
             fill: false,
             backgroundColor: 'rgba(75,192,192,0.2)',
@@ -103,13 +96,14 @@ export default function Graph({ selectedCity }) {
       });
     }
   }, [selectedCity]);
+
   return (
     <div className='dasbord-graph'>
       {selectedCity === "Ville" ? (
         <p>Veuillez sélectionner une ville pour voir les données.</p>
       ) : (
-        <Line data={chartData}/>
+        <Line data={chartData} />
       )}
     </div>
-  )
+  );
 }

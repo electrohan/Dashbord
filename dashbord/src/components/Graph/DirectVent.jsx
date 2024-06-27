@@ -21,6 +21,15 @@ ChartJS.register(
   Legend
 );
 
+const toRadians = (degrees) => degrees * (Math.PI / 180);
+const toDegrees = (radians) => radians * (180 / Math.PI);
+
+const averageWindDirection = (angles) => {
+  const sinSum = angles.reduce((sum, angle) => sum + Math.sin(toRadians(angle)), 0);
+  const cosSum = angles.reduce((sum, angle) => sum + Math.cos(toRadians(angle)), 0);
+  return toDegrees(Math.atan2(sinSum, cosSum));
+};
+
 export default function WindDirection({ selectedCity }) {
   const [winDirData, setWinDirData] = useState({
     labels: [],
@@ -49,7 +58,7 @@ export default function WindDirection({ selectedCity }) {
             const date = new Date(item.DateParam);
             const year = date.getFullYear();
             const month = date.getMonth();
-            return year === currentYear && month >= new Date().getMonth() - 3;
+            return year === currentYear && month >= new Date().getMonth() - 5;
           });
 
           // Agréger les données par mois
@@ -69,7 +78,7 @@ export default function WindDirection({ selectedCity }) {
           const winDirDataByMonth = labels.map(monthYear => {
             const winDirValues = aggregatedWinDir[monthYear];
             // Pour la direction du vent, calculer la moyenne des angles
-            const averageWinDir = winDirValues.reduce((acc, curr) => acc + curr, 0) / winDirValues.length;
+            const averageWinDir = averageWindDirection(winDirValues);
             return averageWinDir;
           });
 

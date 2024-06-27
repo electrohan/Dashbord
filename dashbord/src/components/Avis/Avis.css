@@ -7,4 +7,59 @@
     height: 49%;
     background-color: #F4F5FB;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 5px ;
+    justify-content: space-evenly;
+}
+.AvisPrevi .avis{
+    width: 100%;
+    height: 65%;
+    border-radius: 7px;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 10px;
+    overflow-y: auto;
+}
+.Titre-Avis{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.1);
+}
+.Titre-Avis .Titre-Section{
+    color: #00304E;
+
+}
+.AvisPrevi .PreviMember{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.AvisPrevi .PreviMember .StationName{
+    border-radius: 7px;
+    background-color: white;
+    width: 49%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0,0,0,.1);
+}
+.AvisPrevi .PreviMember .PublisherDate{
+    border-radius: 7px;
+    background-color: white;
+    width: 49%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0,0,0,.1);
 }
